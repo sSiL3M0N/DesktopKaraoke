@@ -49,8 +49,24 @@ namespace DesktopKaraoke.Presentacion.CRUDBase
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            guardarInformacion();
-            btnEditar.Visible = true;
+            if (!String.IsNullOrEmpty(txtUser.Text))
+            {
+
+
+                if (!String.IsNullOrEmpty(txtPass.Text))
+                {
+                    guardarInformacion();
+                }
+                else {
+                    MessageBox.Show("Error", "Verifica la contraseña", MessageBoxButtons.OK);
+                }
+
+            }
+            else {
+                MessageBox.Show("Error", "Verifica el usuario", MessageBoxButtons.OK);
+            }
+
+            
         }
 
         private void guardarInformacion() {
@@ -71,6 +87,8 @@ namespace DesktopKaraoke.Presentacion.CRUDBase
             lu.Estado = "Activo";
             if (du.AgregarUsuario(lu)) {
                 MessageBox.Show("Agregado","Nuevo usuario añadido");
+                btnEditar.Visible = true;
+
             }
 
         }
