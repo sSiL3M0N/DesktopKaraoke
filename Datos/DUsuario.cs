@@ -25,11 +25,12 @@ namespace DesktopKaraoke.Datos
             
             try
             {
+                cMaestra.AbrirConexion();
                 SqlCommand cmd = new SqlCommand("InsertUser", cMaestra.conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@Name", user.Nombre);
-                cmd.Parameters.AddWithValue("@Password", user.Contrasenia);
+                cmd.Parameters.AddWithValue("@Pass", user.Contrasenia);
                 cmd.Parameters.AddWithValue("@Icon", user.Icon);
                 cmd.Parameters.AddWithValue("@State", user.Estado);
 

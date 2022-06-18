@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace DesktopKaraoke.Presentacion.CRUDBase
 {
     public partial class CRUDBase : Form
@@ -37,6 +38,7 @@ namespace DesktopKaraoke.Presentacion.CRUDBase
         private void button1_Click(object sender, EventArgs e)
         {
             panelAgregar.Visible = true;
+            btnEditar.Visible = false;
         }
 
         private void CRUDBase_Load(object sender, EventArgs e)
@@ -48,20 +50,28 @@ namespace DesktopKaraoke.Presentacion.CRUDBase
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             guardarInformacion();
+            btnEditar.Visible = true;
         }
 
         private void guardarInformacion() {
 
             LUsuario lu = new LUsuario();
             DUsuario du = new DUsuario();
+
             lu.Nombre = txtUser.Text;
             lu.Contrasenia=txtPass.Text;
 
             //1. Procesa la Imagen
-
+            //2. Interpreta la imagen
+            //3. Se agrega imagen a SQL Server
+            System.IO.MemoryStream ms =new System.IO.MemoryStream();
+            pbIcon.Image.Save(ms, pbIcon.Image.RawFormat);
+            lu.Icon = ms.GetBuffer();
 
             lu.Estado = "Activo";
-            
+            if (du.AgregarUsuario(lu)) {
+                MessageBox.Show("Agregado","Nuevo usuario añadido");
+            }
 
         }
     }

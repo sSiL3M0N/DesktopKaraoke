@@ -145,6 +145,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(288, 32);
             this.txtPass.TabIndex = 2;
+            this.txtPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtUser
             // 
@@ -153,6 +154,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(288, 32);
             this.txtUser.TabIndex = 1;
+            this.txtUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pbIcon
             // 
